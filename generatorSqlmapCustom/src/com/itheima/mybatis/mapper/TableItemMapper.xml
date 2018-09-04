@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mybatis.mapper.TableItemMapper" >
+  <resultMap id="BaseResultMap" type="com.itheima.mybatis.pojo.TableItemKey" >
+    <id column="TABLE_ID" property="tableId" jdbcType="VARCHAR" />
+    <id column="ITEM_ID" property="itemId" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.itheima.mybatis.pojo.TableItemKey" >
+    delete from crawler_table_item
+    where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+      and ITEM_ID = #{itemId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.mybatis.pojo.TableItemKey" >
+    insert into crawler_table_item (TABLE_ID, ITEM_ID)
+    values (#{tableId,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.mybatis.pojo.TableItemKey" >
+    insert into crawler_table_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tableId != null" >
+        TABLE_ID,
+      </if>
+      <if test="itemId != null" >
+        ITEM_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tableId != null" >
+        #{tableId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mybatis.mapper.WebsiteMapper" >
+  <resultMap id="BaseResultMap" type="com.itheima.mybatis.pojo.Website" >
+    <id column="WEBSITE_ID" property="websiteId" jdbcType="VARCHAR" />
+    <result column="WEBSITE_NAME" property="websiteName" jdbcType="VARCHAR" />
+    <result column="WEBSITE_TYPE" property="websiteType" jdbcType="VARCHAR" />
+    <result column="FIRST_DOMAIN" property="firstDomain" jdbcType="VARCHAR" />
+    <result column="SECOND_DOMAIN" property="secondDomain" jdbcType="VARCHAR" />
+    <result column="WEBSITE_STATUS" property="websiteStatus" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="FOUNDER_ID" property="founderId" jdbcType="VARCHAR" />
+    <result column="MODIFIER_ID" property="modifierId" jdbcType="VARCHAR" />
+    <result column="SHARE_ID" property="shareId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    WEBSITE_ID, WEBSITE_NAME, WEBSITE_TYPE, FIRST_DOMAIN, SECOND_DOMAIN, WEBSITE_STATUS, 
+    CREATE_TIME, MODIFY_TIME, FOUNDER_ID, MODIFIER_ID, SHARE_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_website
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from crawler_website
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.mybatis.pojo.Website" >
+    insert into crawler_website (WEBSITE_ID, WEBSITE_NAME, WEBSITE_TYPE, 
+      FIRST_DOMAIN, SECOND_DOMAIN, WEBSITE_STATUS, 
+      CREATE_TIME, MODIFY_TIME, FOUNDER_ID, 
+      MODIFIER_ID, SHARE_ID)
+    values (#{websiteId,jdbcType=VARCHAR}, #{websiteName,jdbcType=VARCHAR}, #{websiteType,jdbcType=VARCHAR}, 
+      #{firstDomain,jdbcType=VARCHAR}, #{secondDomain,jdbcType=VARCHAR}, #{websiteStatus,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{founderId,jdbcType=VARCHAR}, 
+      #{modifierId,jdbcType=VARCHAR}, #{shareId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.mybatis.pojo.Website" >
+    insert into crawler_website
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="websiteId != null" >
+        WEBSITE_ID,
+      </if>
+      <if test="websiteName != null" >
+        WEBSITE_NAME,
+      </if>
+      <if test="websiteType != null" >
+        WEBSITE_TYPE,
+      </if>
+      <if test="firstDomain != null" >
+        FIRST_DOMAIN,
+      </if>
+      <if test="secondDomain != null" >
+        SECOND_DOMAIN,
+      </if>
+      <if test="websiteStatus != null" >
+        WEBSITE_STATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+      <if test="founderId != null" >
+        FOUNDER_ID,
+      </if>
+      <if test="modifierId != null" >
+        MODIFIER_ID,
+      </if>
+      <if test="shareId != null" >
+        SHARE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="websiteId != null" >
+        #{websiteId,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteName != null" >
+        #{websiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteType != null" >
+        #{websiteType,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDomain != null" >
+        #{firstDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="secondDomain != null" >
+        #{secondDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteStatus != null" >
+        #{websiteStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null" >
+        #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null" >
+        #{modifierId,jdbcType=VARCHAR},
+      </if>
+      <if test="shareId != null" >
+        #{shareId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itheima.mybatis.pojo.Website" >
+    update crawler_website
+    <set >
+      <if test="websiteName != null" >
+        WEBSITE_NAME = #{websiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteType != null" >
+        WEBSITE_TYPE = #{websiteType,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDomain != null" >
+        FIRST_DOMAIN = #{firstDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="secondDomain != null" >
+        SECOND_DOMAIN = #{secondDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteStatus != null" >
+        WEBSITE_STATUS = #{websiteStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null" >
+        FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null" >
+        MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      </if>
+      <if test="shareId != null" >
+        SHARE_ID = #{shareId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itheima.mybatis.pojo.Website" >
+    update crawler_website
+    set WEBSITE_NAME = #{websiteName,jdbcType=VARCHAR},
+      WEBSITE_TYPE = #{websiteType,jdbcType=VARCHAR},
+      FIRST_DOMAIN = #{firstDomain,jdbcType=VARCHAR},
+      SECOND_DOMAIN = #{secondDomain,jdbcType=VARCHAR},
+      WEBSITE_STATUS = #{websiteStatus,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      SHARE_ID = #{shareId,jdbcType=VARCHAR}
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </update>
+</mapper>

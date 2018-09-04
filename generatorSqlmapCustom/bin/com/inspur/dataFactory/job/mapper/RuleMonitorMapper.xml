@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inspur.dataFactory.job.mapper.RuleMonitorMapper">
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.RuleMonitorKey">
+    <id column="RULE_ID" jdbcType="VARCHAR" property="ruleId" />
+    <id column="RULE_TYPE" jdbcType="DECIMAL" property="ruleType" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.RuleMonitorKey">
+    delete from crawler_rule_monitor
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+      and RULE_TYPE = #{ruleType,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.RuleMonitorKey">
+    insert into crawler_rule_monitor (RULE_ID, RULE_TYPE)
+    values (#{ruleId,jdbcType=VARCHAR}, #{ruleType,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.RuleMonitorKey">
+    insert into crawler_rule_monitor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ruleId != null">
+        RULE_ID,
+      </if>
+      <if test="ruleType != null">
+        RULE_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleType != null">
+        #{ruleType,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.RuleMonitorKey">
+    <id column="RULE_ID" jdbcType="VARCHAR" property="ruleId" />
+    <id column="RULE_TYPE" jdbcType="DECIMAL" property="ruleType" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.RuleMonitorKey">
+    delete from crawler_rule_monitor
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+      and RULE_TYPE = #{ruleType,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.RuleMonitorKey">
+    insert into crawler_rule_monitor (RULE_ID, RULE_TYPE)
+    values (#{ruleId,jdbcType=VARCHAR}, #{ruleType,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.RuleMonitorKey">
+    insert into crawler_rule_monitor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ruleId != null">
+        RULE_ID,
+      </if>
+      <if test="ruleType != null">
+        RULE_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleType != null">
+        #{ruleType,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mybatis.mapper.RuleMonitorMapper" >
+  <resultMap id="BaseResultMap" type="com.itheima.mybatis.pojo.RuleMonitorKey" >
+    <id column="RULE_ID" property="ruleId" jdbcType="VARCHAR" />
+    <id column="RULE_TYPE" property="ruleType" jdbcType="DECIMAL" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.itheima.mybatis.pojo.RuleMonitorKey" >
+    delete from crawler_rule_monitor
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+      and RULE_TYPE = #{ruleType,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.mybatis.pojo.RuleMonitorKey" >
+    insert into crawler_rule_monitor (RULE_ID, RULE_TYPE)
+    values (#{ruleId,jdbcType=VARCHAR}, #{ruleType,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.mybatis.pojo.RuleMonitorKey" >
+    insert into crawler_rule_monitor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ruleId != null" >
+        RULE_ID,
+      </if>
+      <if test="ruleType != null" >
+        RULE_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ruleId != null" >
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleType != null" >
+        #{ruleType,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

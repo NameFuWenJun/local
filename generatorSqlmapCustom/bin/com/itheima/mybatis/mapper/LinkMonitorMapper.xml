@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mybatis.mapper.LinkMonitorMapper" >
+  <resultMap id="BaseResultMap" type="com.itheima.mybatis.pojo.LinkMonitor" >
+    <id column="LINK_ID" property="linkId" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from crawler_link_monitor
+    where LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.mybatis.pojo.LinkMonitor" >
+    insert into crawler_link_monitor (LINK_ID)
+    values (#{linkId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.mybatis.pojo.LinkMonitor" >
+    insert into crawler_link_monitor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="linkId != null" >
+        LINK_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="linkId != null" >
+        #{linkId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

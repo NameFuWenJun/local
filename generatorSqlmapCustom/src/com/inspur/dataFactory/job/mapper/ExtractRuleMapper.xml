@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inspur.dataFactory.job.mapper.ExtractRuleMapper">
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ExtractRule">
+    <id column="RULE_ID" jdbcType="VARCHAR" property="ruleId" />
+    <result column="LINK_ID" jdbcType="VARCHAR" property="linkId" />
+    <result column="RULE_NAME" jdbcType="VARCHAR" property="ruleName" />
+    <result column="EXTRACT_MODE" jdbcType="DECIMAL" property="extractMode" />
+    <result column="EXTRACT_COUNT" jdbcType="DECIMAL" property="extractCount" />
+    <result column="ENABLED" jdbcType="DECIMAL" property="enabled" />
+    <result column="TEST_URL" jdbcType="VARCHAR" property="testUrl" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="FOUNDER_ID" jdbcType="VARCHAR" property="founderId" />
+    <result column="MODIFIER_ID" jdbcType="VARCHAR" property="modifierId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RULE_ID, LINK_ID, RULE_NAME, EXTRACT_MODE, EXTRACT_COUNT, ENABLED, TEST_URL, CREATE_TIME, 
+    MODIFY_TIME, FOUNDER_ID, MODIFIER_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_extract_rule
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_extract_rule
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ExtractRule">
+    insert into crawler_extract_rule (RULE_ID, LINK_ID, RULE_NAME, 
+      EXTRACT_MODE, EXTRACT_COUNT, ENABLED, 
+      TEST_URL, CREATE_TIME, MODIFY_TIME, 
+      FOUNDER_ID, MODIFIER_ID)
+    values (#{ruleId,jdbcType=VARCHAR}, #{linkId,jdbcType=VARCHAR}, #{ruleName,jdbcType=VARCHAR}, 
+      #{extractMode,jdbcType=DECIMAL}, #{extractCount,jdbcType=DECIMAL}, #{enabled,jdbcType=DECIMAL}, 
+      #{testUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{founderId,jdbcType=VARCHAR}, #{modifierId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ExtractRule">
+    insert into crawler_extract_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ruleId != null">
+        RULE_ID,
+      </if>
+      <if test="linkId != null">
+        LINK_ID,
+      </if>
+      <if test="ruleName != null">
+        RULE_NAME,
+      </if>
+      <if test="extractMode != null">
+        EXTRACT_MODE,
+      </if>
+      <if test="extractCount != null">
+        EXTRACT_COUNT,
+      </if>
+      <if test="enabled != null">
+        ENABLED,
+      </if>
+      <if test="testUrl != null">
+        TEST_URL,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID,
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="linkId != null">
+        #{linkId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleName != null">
+        #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="extractMode != null">
+        #{extractMode,jdbcType=DECIMAL},
+      </if>
+      <if test="extractCount != null">
+        #{extractCount,jdbcType=DECIMAL},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=DECIMAL},
+      </if>
+      <if test="testUrl != null">
+        #{testUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ExtractRule">
+    update crawler_extract_rule
+    <set>
+      <if test="linkId != null">
+        LINK_ID = #{linkId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleName != null">
+        RULE_NAME = #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="extractMode != null">
+        EXTRACT_MODE = #{extractMode,jdbcType=DECIMAL},
+      </if>
+      <if test="extractCount != null">
+        EXTRACT_COUNT = #{extractCount,jdbcType=DECIMAL},
+      </if>
+      <if test="enabled != null">
+        ENABLED = #{enabled,jdbcType=DECIMAL},
+      </if>
+      <if test="testUrl != null">
+        TEST_URL = #{testUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ExtractRule">
+    update crawler_extract_rule
+    set LINK_ID = #{linkId,jdbcType=VARCHAR},
+      RULE_NAME = #{ruleName,jdbcType=VARCHAR},
+      EXTRACT_MODE = #{extractMode,jdbcType=DECIMAL},
+      EXTRACT_COUNT = #{extractCount,jdbcType=DECIMAL},
+      ENABLED = #{enabled,jdbcType=DECIMAL},
+      TEST_URL = #{testUrl,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      MODIFIER_ID = #{modifierId,jdbcType=VARCHAR}
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ExtractRule">
+    <id column="RULE_ID" jdbcType="VARCHAR" property="ruleId" />
+    <result column="LINK_ID" jdbcType="VARCHAR" property="linkId" />
+    <result column="RULE_NAME" jdbcType="VARCHAR" property="ruleName" />
+    <result column="EXTRACT_MODE" jdbcType="DECIMAL" property="extractMode" />
+    <result column="EXTRACT_COUNT" jdbcType="DECIMAL" property="extractCount" />
+    <result column="ENABLED" jdbcType="DECIMAL" property="enabled" />
+    <result column="TEST_URL" jdbcType="VARCHAR" property="testUrl" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="FOUNDER_ID" jdbcType="VARCHAR" property="founderId" />
+    <result column="MODIFIER_ID" jdbcType="VARCHAR" property="modifierId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RULE_ID, LINK_ID, RULE_NAME, EXTRACT_MODE, EXTRACT_COUNT, ENABLED, TEST_URL, CREATE_TIME, 
+    MODIFY_TIME, FOUNDER_ID, MODIFIER_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_extract_rule
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_extract_rule
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ExtractRule">
+    insert into crawler_extract_rule (RULE_ID, LINK_ID, RULE_NAME, 
+      EXTRACT_MODE, EXTRACT_COUNT, ENABLED, 
+      TEST_URL, CREATE_TIME, MODIFY_TIME, 
+      FOUNDER_ID, MODIFIER_ID)
+    values (#{ruleId,jdbcType=VARCHAR}, #{linkId,jdbcType=VARCHAR}, #{ruleName,jdbcType=VARCHAR}, 
+      #{extractMode,jdbcType=DECIMAL}, #{extractCount,jdbcType=DECIMAL}, #{enabled,jdbcType=DECIMAL}, 
+      #{testUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{founderId,jdbcType=VARCHAR}, #{modifierId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ExtractRule">
+    insert into crawler_extract_rule
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ruleId != null">
+        RULE_ID,
+      </if>
+      <if test="linkId != null">
+        LINK_ID,
+      </if>
+      <if test="ruleName != null">
+        RULE_NAME,
+      </if>
+      <if test="extractMode != null">
+        EXTRACT_MODE,
+      </if>
+      <if test="extractCount != null">
+        EXTRACT_COUNT,
+      </if>
+      <if test="enabled != null">
+        ENABLED,
+      </if>
+      <if test="testUrl != null">
+        TEST_URL,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID,
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="linkId != null">
+        #{linkId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleName != null">
+        #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="extractMode != null">
+        #{extractMode,jdbcType=DECIMAL},
+      </if>
+      <if test="extractCount != null">
+        #{extractCount,jdbcType=DECIMAL},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=DECIMAL},
+      </if>
+      <if test="testUrl != null">
+        #{testUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ExtractRule">
+    update crawler_extract_rule
+    <set>
+      <if test="linkId != null">
+        LINK_ID = #{linkId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleName != null">
+        RULE_NAME = #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="extractMode != null">
+        EXTRACT_MODE = #{extractMode,jdbcType=DECIMAL},
+      </if>
+      <if test="extractCount != null">
+        EXTRACT_COUNT = #{extractCount,jdbcType=DECIMAL},
+      </if>
+      <if test="enabled != null">
+        ENABLED = #{enabled,jdbcType=DECIMAL},
+      </if>
+      <if test="testUrl != null">
+        TEST_URL = #{testUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ExtractRule">
+    update crawler_extract_rule
+    set LINK_ID = #{linkId,jdbcType=VARCHAR},
+      RULE_NAME = #{ruleName,jdbcType=VARCHAR},
+      EXTRACT_MODE = #{extractMode,jdbcType=DECIMAL},
+      EXTRACT_COUNT = #{extractCount,jdbcType=DECIMAL},
+      ENABLED = #{enabled,jdbcType=DECIMAL},
+      TEST_URL = #{testUrl,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      MODIFIER_ID = #{modifierId,jdbcType=VARCHAR}
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </update>
+</mapper>

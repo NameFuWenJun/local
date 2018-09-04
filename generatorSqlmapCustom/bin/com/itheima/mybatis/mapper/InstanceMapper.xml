@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mybatis.mapper.InstanceMapper" >
+  <resultMap id="BaseResultMap" type="com.itheima.mybatis.pojo.Instance" >
+    <id column="INSTANCE_ID" property="instanceId" jdbcType="VARCHAR" />
+    <result column="TASK_ID" property="taskId" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="STARTER_ID" property="starterId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    INSTANCE_ID, TASK_ID, STATUS, START_TIME, END_TIME, STARTER_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_instance
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from crawler_instance
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.mybatis.pojo.Instance" >
+    insert into crawler_instance (INSTANCE_ID, TASK_ID, STATUS, 
+      START_TIME, END_TIME, STARTER_ID
+      )
+    values (#{instanceId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{status,jdbcType=DECIMAL}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{starterId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.mybatis.pojo.Instance" >
+    insert into crawler_instance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="instanceId != null" >
+        INSTANCE_ID,
+      </if>
+      <if test="taskId != null" >
+        TASK_ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="startTime != null" >
+        START_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="starterId != null" >
+        STARTER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="instanceId != null" >
+        #{instanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starterId != null" >
+        #{starterId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itheima.mybatis.pojo.Instance" >
+    update crawler_instance
+    <set >
+      <if test="taskId != null" >
+        TASK_ID = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null" >
+        START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starterId != null" >
+        STARTER_ID = #{starterId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itheima.mybatis.pojo.Instance" >
+    update crawler_instance
+    set TASK_ID = #{taskId,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=DECIMAL},
+      START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      STARTER_ID = #{starterId,jdbcType=VARCHAR}
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </update>
+</mapper>

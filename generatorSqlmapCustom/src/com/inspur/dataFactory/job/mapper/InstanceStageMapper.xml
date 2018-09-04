@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inspur.dataFactory.job.mapper.InstanceStageMapper">
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStage">
+    <id column="INSTANCE_ID" jdbcType="VARCHAR" property="instanceId" />
+    <id column="LINK_ID" jdbcType="VARCHAR" property="linkId" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    INSTANCE_ID, LINK_ID, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_instance_stage
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+      and LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStageKey">
+    delete from crawler_instance_stage
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+      and LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStage">
+    insert into crawler_instance_stage (INSTANCE_ID, LINK_ID, STATUS
+      )
+    values (#{instanceId,jdbcType=VARCHAR}, #{linkId,jdbcType=VARCHAR}, #{status,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStage">
+    insert into crawler_instance_stage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="instanceId != null">
+        INSTANCE_ID,
+      </if>
+      <if test="linkId != null">
+        LINK_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="instanceId != null">
+        #{instanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="linkId != null">
+        #{linkId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStage">
+    update crawler_instance_stage
+    <set>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+      and LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStage">
+    update crawler_instance_stage
+    set STATUS = #{status,jdbcType=DECIMAL}
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+      and LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStage">
+    <id column="INSTANCE_ID" jdbcType="VARCHAR" property="instanceId" />
+    <id column="LINK_ID" jdbcType="VARCHAR" property="linkId" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    INSTANCE_ID, LINK_ID, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStageKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_instance_stage
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+      and LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStageKey">
+    delete from crawler_instance_stage
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+      and LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStage">
+    insert into crawler_instance_stage (INSTANCE_ID, LINK_ID, STATUS
+      )
+    values (#{instanceId,jdbcType=VARCHAR}, #{linkId,jdbcType=VARCHAR}, #{status,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStage">
+    insert into crawler_instance_stage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="instanceId != null">
+        INSTANCE_ID,
+      </if>
+      <if test="linkId != null">
+        LINK_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="instanceId != null">
+        #{instanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="linkId != null">
+        #{linkId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStage">
+    update crawler_instance_stage
+    <set>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+      and LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceStage">
+    update crawler_instance_stage
+    set STATUS = #{status,jdbcType=DECIMAL}
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+      and LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </update>
+</mapper>

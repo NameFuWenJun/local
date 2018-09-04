@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inspur.dataFactory.job.mapper.TableInfoMapper">
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.TableInfo">
+    <id column="TABLE_ID" jdbcType="VARCHAR" property="tableId" />
+    <result column="WEBSITE_ID" jdbcType="VARCHAR" property="websiteId" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+    <result column="TABLE_DESC" jdbcType="VARCHAR" property="tableDesc" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="FOUNDER_ID" jdbcType="VARCHAR" property="founderId" />
+    <result column="MODIFIER_ID" jdbcType="VARCHAR" property="modifierId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TABLE_ID, WEBSITE_ID, TABLE_NAME, TABLE_DESC, CREATE_TIME, MODIFY_TIME, FOUNDER_ID, 
+    MODIFIER_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_table_info
+    where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_table_info
+    where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.TableInfo">
+    insert into crawler_table_info (TABLE_ID, WEBSITE_ID, TABLE_NAME, 
+      TABLE_DESC, CREATE_TIME, MODIFY_TIME, 
+      FOUNDER_ID, MODIFIER_ID)
+    values (#{tableId,jdbcType=VARCHAR}, #{websiteId,jdbcType=VARCHAR}, #{tableName,jdbcType=VARCHAR}, 
+      #{tableDesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{founderId,jdbcType=VARCHAR}, #{modifierId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.TableInfo">
+    insert into crawler_table_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        TABLE_ID,
+      </if>
+      <if test="websiteId != null">
+        WEBSITE_ID,
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME,
+      </if>
+      <if test="tableDesc != null">
+        TABLE_DESC,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID,
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        #{tableId,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteId != null">
+        #{websiteId,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null">
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="tableDesc != null">
+        #{tableDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.TableInfo">
+    update crawler_table_info
+    <set>
+      <if test="websiteId != null">
+        WEBSITE_ID = #{websiteId,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="tableDesc != null">
+        TABLE_DESC = #{tableDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.TableInfo">
+    update crawler_table_info
+    set WEBSITE_ID = #{websiteId,jdbcType=VARCHAR},
+      TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      TABLE_DESC = #{tableDesc,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      MODIFIER_ID = #{modifierId,jdbcType=VARCHAR}
+    where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.TableInfo">
+    <id column="TABLE_ID" jdbcType="VARCHAR" property="tableId" />
+    <result column="WEBSITE_ID" jdbcType="VARCHAR" property="websiteId" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+    <result column="TABLE_DESC" jdbcType="VARCHAR" property="tableDesc" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="FOUNDER_ID" jdbcType="VARCHAR" property="founderId" />
+    <result column="MODIFIER_ID" jdbcType="VARCHAR" property="modifierId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TABLE_ID, WEBSITE_ID, TABLE_NAME, TABLE_DESC, CREATE_TIME, MODIFY_TIME, FOUNDER_ID, 
+    MODIFIER_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_table_info
+    where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_table_info
+    where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.TableInfo">
+    insert into crawler_table_info (TABLE_ID, WEBSITE_ID, TABLE_NAME, 
+      TABLE_DESC, CREATE_TIME, MODIFY_TIME, 
+      FOUNDER_ID, MODIFIER_ID)
+    values (#{tableId,jdbcType=VARCHAR}, #{websiteId,jdbcType=VARCHAR}, #{tableName,jdbcType=VARCHAR}, 
+      #{tableDesc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{founderId,jdbcType=VARCHAR}, #{modifierId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.TableInfo">
+    insert into crawler_table_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        TABLE_ID,
+      </if>
+      <if test="websiteId != null">
+        WEBSITE_ID,
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME,
+      </if>
+      <if test="tableDesc != null">
+        TABLE_DESC,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID,
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tableId != null">
+        #{tableId,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteId != null">
+        #{websiteId,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null">
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="tableDesc != null">
+        #{tableDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.TableInfo">
+    update crawler_table_info
+    <set>
+      <if test="websiteId != null">
+        WEBSITE_ID = #{websiteId,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="tableDesc != null">
+        TABLE_DESC = #{tableDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.TableInfo">
+    update crawler_table_info
+    set WEBSITE_ID = #{websiteId,jdbcType=VARCHAR},
+      TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      TABLE_DESC = #{tableDesc,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      MODIFIER_ID = #{modifierId,jdbcType=VARCHAR}
+    where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mybatis.mapper.DataHandleMapper" >
+  <resultMap id="BaseResultMap" type="com.itheima.mybatis.pojo.DataHandle" >
+    <result column="HANDLE_TYPE" property="handleType" jdbcType="DECIMAL" />
+    <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="STARTER_ID" property="starterId" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.itheima.mybatis.pojo.DataHandle" >
+    insert into crawler_data_handle (HANDLE_TYPE, START_TIME, END_TIME, 
+      STARTER_ID)
+    values (#{handleType,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{starterId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.mybatis.pojo.DataHandle" >
+    insert into crawler_data_handle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="handleType != null" >
+        HANDLE_TYPE,
+      </if>
+      <if test="startTime != null" >
+        START_TIME,
+      </if>
+      <if test="endTime != null" >
+        END_TIME,
+      </if>
+      <if test="starterId != null" >
+        STARTER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="handleType != null" >
+        #{handleType,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starterId != null" >
+        #{starterId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

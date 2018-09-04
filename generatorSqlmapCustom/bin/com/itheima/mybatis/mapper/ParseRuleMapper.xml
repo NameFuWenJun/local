@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mybatis.mapper.ParseRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.itheima.mybatis.pojo.ParseRule" >
+    <id column="RULE_ID" property="ruleId" jdbcType="VARCHAR" />
+    <result column="LINK_ID" property="linkId" jdbcType="VARCHAR" />
+    <result column="RULE_NAME" property="ruleName" jdbcType="VARCHAR" />
+    <result column="URL_TYPE" property="urlType" jdbcType="DECIMAL" />
+    <result column="EXTRACT_MODE" property="extractMode" jdbcType="DECIMAL" />
+    <result column="PERIPHERAL_REGEX" property="peripheralRegex" jdbcType="VARCHAR" />
+    <result column="REGEX" property="regex" jdbcType="VARCHAR" />
+    <result column="REGEX_GROUP_ID" property="regexGroupId" jdbcType="VARCHAR" />
+    <result column="XPATH" property="xpath" jdbcType="VARCHAR" />
+    <result column="ENABLED" property="enabled" jdbcType="DECIMAL" />
+    <result column="URL_WITH_LOOP" property="urlWithLoop" jdbcType="DECIMAL" />
+    <result column="LOOP_START" property="loopStart" jdbcType="VARCHAR" />
+    <result column="LOOP_END" property="loopEnd" jdbcType="VARCHAR" />
+    <result column="LOOP_VAR" property="loopVar" jdbcType="VARCHAR" />
+    <result column="LOOP_STEP" property="loopStep" jdbcType="DECIMAL" />
+    <result column="LOOP_FORMAT" property="loopFormat" jdbcType="VARCHAR" />
+    <result column="LOOP_VAR_TYPE" property="loopVarType" jdbcType="DECIMAL" />
+    <result column="LOOP_SAMPLE" property="loopSample" jdbcType="VARCHAR" />
+    <result column="TEST_URL" property="testUrl" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="FOUNDER_ID" property="founderId" jdbcType="VARCHAR" />
+    <result column="MODIFIER_ID" property="modifierId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RULE_ID, LINK_ID, RULE_NAME, URL_TYPE, EXTRACT_MODE, PERIPHERAL_REGEX, REGEX, REGEX_GROUP_ID, 
+    XPATH, ENABLED, URL_WITH_LOOP, LOOP_START, LOOP_END, LOOP_VAR, LOOP_STEP, LOOP_FORMAT, 
+    LOOP_VAR_TYPE, LOOP_SAMPLE, TEST_URL, CREATE_TIME, MODIFY_TIME, FOUNDER_ID, MODIFIER_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_parse_rule
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from crawler_parse_rule
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.mybatis.pojo.ParseRule" >
+    insert into crawler_parse_rule (RULE_ID, LINK_ID, RULE_NAME, 
+      URL_TYPE, EXTRACT_MODE, PERIPHERAL_REGEX, 
+      REGEX, REGEX_GROUP_ID, XPATH, 
+      ENABLED, URL_WITH_LOOP, LOOP_START, 
+      LOOP_END, LOOP_VAR, LOOP_STEP, 
+      LOOP_FORMAT, LOOP_VAR_TYPE, LOOP_SAMPLE, 
+      TEST_URL, CREATE_TIME, MODIFY_TIME, 
+      FOUNDER_ID, MODIFIER_ID)
+    values (#{ruleId,jdbcType=VARCHAR}, #{linkId,jdbcType=VARCHAR}, #{ruleName,jdbcType=VARCHAR}, 
+      #{urlType,jdbcType=DECIMAL}, #{extractMode,jdbcType=DECIMAL}, #{peripheralRegex,jdbcType=VARCHAR}, 
+      #{regex,jdbcType=VARCHAR}, #{regexGroupId,jdbcType=VARCHAR}, #{xpath,jdbcType=VARCHAR}, 
+      #{enabled,jdbcType=DECIMAL}, #{urlWithLoop,jdbcType=DECIMAL}, #{loopStart,jdbcType=VARCHAR}, 
+      #{loopEnd,jdbcType=VARCHAR}, #{loopVar,jdbcType=VARCHAR}, #{loopStep,jdbcType=DECIMAL}, 
+      #{loopFormat,jdbcType=VARCHAR}, #{loopVarType,jdbcType=DECIMAL}, #{loopSample,jdbcType=VARCHAR}, 
+      #{testUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{founderId,jdbcType=VARCHAR}, #{modifierId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.mybatis.pojo.ParseRule" >
+    insert into crawler_parse_rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ruleId != null" >
+        RULE_ID,
+      </if>
+      <if test="linkId != null" >
+        LINK_ID,
+      </if>
+      <if test="ruleName != null" >
+        RULE_NAME,
+      </if>
+      <if test="urlType != null" >
+        URL_TYPE,
+      </if>
+      <if test="extractMode != null" >
+        EXTRACT_MODE,
+      </if>
+      <if test="peripheralRegex != null" >
+        PERIPHERAL_REGEX,
+      </if>
+      <if test="regex != null" >
+        REGEX,
+      </if>
+      <if test="regexGroupId != null" >
+        REGEX_GROUP_ID,
+      </if>
+      <if test="xpath != null" >
+        XPATH,
+      </if>
+      <if test="enabled != null" >
+        ENABLED,
+      </if>
+      <if test="urlWithLoop != null" >
+        URL_WITH_LOOP,
+      </if>
+      <if test="loopStart != null" >
+        LOOP_START,
+      </if>
+      <if test="loopEnd != null" >
+        LOOP_END,
+      </if>
+      <if test="loopVar != null" >
+        LOOP_VAR,
+      </if>
+      <if test="loopStep != null" >
+        LOOP_STEP,
+      </if>
+      <if test="loopFormat != null" >
+        LOOP_FORMAT,
+      </if>
+      <if test="loopVarType != null" >
+        LOOP_VAR_TYPE,
+      </if>
+      <if test="loopSample != null" >
+        LOOP_SAMPLE,
+      </if>
+      <if test="testUrl != null" >
+        TEST_URL,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+      <if test="founderId != null" >
+        FOUNDER_ID,
+      </if>
+      <if test="modifierId != null" >
+        MODIFIER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ruleId != null" >
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="linkId != null" >
+        #{linkId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleName != null" >
+        #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="urlType != null" >
+        #{urlType,jdbcType=DECIMAL},
+      </if>
+      <if test="extractMode != null" >
+        #{extractMode,jdbcType=DECIMAL},
+      </if>
+      <if test="peripheralRegex != null" >
+        #{peripheralRegex,jdbcType=VARCHAR},
+      </if>
+      <if test="regex != null" >
+        #{regex,jdbcType=VARCHAR},
+      </if>
+      <if test="regexGroupId != null" >
+        #{regexGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="xpath != null" >
+        #{xpath,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null" >
+        #{enabled,jdbcType=DECIMAL},
+      </if>
+      <if test="urlWithLoop != null" >
+        #{urlWithLoop,jdbcType=DECIMAL},
+      </if>
+      <if test="loopStart != null" >
+        #{loopStart,jdbcType=VARCHAR},
+      </if>
+      <if test="loopEnd != null" >
+        #{loopEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="loopVar != null" >
+        #{loopVar,jdbcType=VARCHAR},
+      </if>
+      <if test="loopStep != null" >
+        #{loopStep,jdbcType=DECIMAL},
+      </if>
+      <if test="loopFormat != null" >
+        #{loopFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="loopVarType != null" >
+        #{loopVarType,jdbcType=DECIMAL},
+      </if>
+      <if test="loopSample != null" >
+        #{loopSample,jdbcType=VARCHAR},
+      </if>
+      <if test="testUrl != null" >
+        #{testUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null" >
+        #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null" >
+        #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itheima.mybatis.pojo.ParseRule" >
+    update crawler_parse_rule
+    <set >
+      <if test="linkId != null" >
+        LINK_ID = #{linkId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleName != null" >
+        RULE_NAME = #{ruleName,jdbcType=VARCHAR},
+      </if>
+      <if test="urlType != null" >
+        URL_TYPE = #{urlType,jdbcType=DECIMAL},
+      </if>
+      <if test="extractMode != null" >
+        EXTRACT_MODE = #{extractMode,jdbcType=DECIMAL},
+      </if>
+      <if test="peripheralRegex != null" >
+        PERIPHERAL_REGEX = #{peripheralRegex,jdbcType=VARCHAR},
+      </if>
+      <if test="regex != null" >
+        REGEX = #{regex,jdbcType=VARCHAR},
+      </if>
+      <if test="regexGroupId != null" >
+        REGEX_GROUP_ID = #{regexGroupId,jdbcType=VARCHAR},
+      </if>
+      <if test="xpath != null" >
+        XPATH = #{xpath,jdbcType=VARCHAR},
+      </if>
+      <if test="enabled != null" >
+        ENABLED = #{enabled,jdbcType=DECIMAL},
+      </if>
+      <if test="urlWithLoop != null" >
+        URL_WITH_LOOP = #{urlWithLoop,jdbcType=DECIMAL},
+      </if>
+      <if test="loopStart != null" >
+        LOOP_START = #{loopStart,jdbcType=VARCHAR},
+      </if>
+      <if test="loopEnd != null" >
+        LOOP_END = #{loopEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="loopVar != null" >
+        LOOP_VAR = #{loopVar,jdbcType=VARCHAR},
+      </if>
+      <if test="loopStep != null" >
+        LOOP_STEP = #{loopStep,jdbcType=DECIMAL},
+      </if>
+      <if test="loopFormat != null" >
+        LOOP_FORMAT = #{loopFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="loopVarType != null" >
+        LOOP_VAR_TYPE = #{loopVarType,jdbcType=DECIMAL},
+      </if>
+      <if test="loopSample != null" >
+        LOOP_SAMPLE = #{loopSample,jdbcType=VARCHAR},
+      </if>
+      <if test="testUrl != null" >
+        TEST_URL = #{testUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null" >
+        FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null" >
+        MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itheima.mybatis.pojo.ParseRule" >
+    update crawler_parse_rule
+    set LINK_ID = #{linkId,jdbcType=VARCHAR},
+      RULE_NAME = #{ruleName,jdbcType=VARCHAR},
+      URL_TYPE = #{urlType,jdbcType=DECIMAL},
+      EXTRACT_MODE = #{extractMode,jdbcType=DECIMAL},
+      PERIPHERAL_REGEX = #{peripheralRegex,jdbcType=VARCHAR},
+      REGEX = #{regex,jdbcType=VARCHAR},
+      REGEX_GROUP_ID = #{regexGroupId,jdbcType=VARCHAR},
+      XPATH = #{xpath,jdbcType=VARCHAR},
+      ENABLED = #{enabled,jdbcType=DECIMAL},
+      URL_WITH_LOOP = #{urlWithLoop,jdbcType=DECIMAL},
+      LOOP_START = #{loopStart,jdbcType=VARCHAR},
+      LOOP_END = #{loopEnd,jdbcType=VARCHAR},
+      LOOP_VAR = #{loopVar,jdbcType=VARCHAR},
+      LOOP_STEP = #{loopStep,jdbcType=DECIMAL},
+      LOOP_FORMAT = #{loopFormat,jdbcType=VARCHAR},
+      LOOP_VAR_TYPE = #{loopVarType,jdbcType=DECIMAL},
+      LOOP_SAMPLE = #{loopSample,jdbcType=VARCHAR},
+      TEST_URL = #{testUrl,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      MODIFIER_ID = #{modifierId,jdbcType=VARCHAR}
+    where RULE_ID = #{ruleId,jdbcType=VARCHAR}
+  </update>
+</mapper>

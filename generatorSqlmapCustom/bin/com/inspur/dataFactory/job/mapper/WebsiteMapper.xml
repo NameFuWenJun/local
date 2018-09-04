@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inspur.dataFactory.job.mapper.WebsiteMapper">
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.Website">
+    <id column="WEBSITE_ID" jdbcType="VARCHAR" property="websiteId" />
+    <result column="WEBSITE_NAME" jdbcType="VARCHAR" property="websiteName" />
+    <result column="WEBSITE_TYPE" jdbcType="VARCHAR" property="websiteType" />
+    <result column="FIRST_DOMAIN" jdbcType="VARCHAR" property="firstDomain" />
+    <result column="SECOND_DOMAIN" jdbcType="VARCHAR" property="secondDomain" />
+    <result column="WEBSITE_STATUS" jdbcType="DECIMAL" property="websiteStatus" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="FOUNDER_ID" jdbcType="VARCHAR" property="founderId" />
+    <result column="MODIFIER_ID" jdbcType="VARCHAR" property="modifierId" />
+    <result column="SHARE_ID" jdbcType="VARCHAR" property="shareId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    WEBSITE_ID, WEBSITE_NAME, WEBSITE_TYPE, FIRST_DOMAIN, SECOND_DOMAIN, WEBSITE_STATUS, 
+    CREATE_TIME, MODIFY_TIME, FOUNDER_ID, MODIFIER_ID, SHARE_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_website
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_website
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.Website">
+    insert into crawler_website (WEBSITE_ID, WEBSITE_NAME, WEBSITE_TYPE, 
+      FIRST_DOMAIN, SECOND_DOMAIN, WEBSITE_STATUS, 
+      CREATE_TIME, MODIFY_TIME, FOUNDER_ID, 
+      MODIFIER_ID, SHARE_ID)
+    values (#{websiteId,jdbcType=VARCHAR}, #{websiteName,jdbcType=VARCHAR}, #{websiteType,jdbcType=VARCHAR}, 
+      #{firstDomain,jdbcType=VARCHAR}, #{secondDomain,jdbcType=VARCHAR}, #{websiteStatus,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{founderId,jdbcType=VARCHAR}, 
+      #{modifierId,jdbcType=VARCHAR}, #{shareId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.Website">
+    insert into crawler_website
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="websiteId != null">
+        WEBSITE_ID,
+      </if>
+      <if test="websiteName != null">
+        WEBSITE_NAME,
+      </if>
+      <if test="websiteType != null">
+        WEBSITE_TYPE,
+      </if>
+      <if test="firstDomain != null">
+        FIRST_DOMAIN,
+      </if>
+      <if test="secondDomain != null">
+        SECOND_DOMAIN,
+      </if>
+      <if test="websiteStatus != null">
+        WEBSITE_STATUS,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID,
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID,
+      </if>
+      <if test="shareId != null">
+        SHARE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="websiteId != null">
+        #{websiteId,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteName != null">
+        #{websiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteType != null">
+        #{websiteType,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDomain != null">
+        #{firstDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="secondDomain != null">
+        #{secondDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteStatus != null">
+        #{websiteStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        #{modifierId,jdbcType=VARCHAR},
+      </if>
+      <if test="shareId != null">
+        #{shareId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.Website">
+    update crawler_website
+    <set>
+      <if test="websiteName != null">
+        WEBSITE_NAME = #{websiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteType != null">
+        WEBSITE_TYPE = #{websiteType,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDomain != null">
+        FIRST_DOMAIN = #{firstDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="secondDomain != null">
+        SECOND_DOMAIN = #{secondDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteStatus != null">
+        WEBSITE_STATUS = #{websiteStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      </if>
+      <if test="shareId != null">
+        SHARE_ID = #{shareId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.Website">
+    update crawler_website
+    set WEBSITE_NAME = #{websiteName,jdbcType=VARCHAR},
+      WEBSITE_TYPE = #{websiteType,jdbcType=VARCHAR},
+      FIRST_DOMAIN = #{firstDomain,jdbcType=VARCHAR},
+      SECOND_DOMAIN = #{secondDomain,jdbcType=VARCHAR},
+      WEBSITE_STATUS = #{websiteStatus,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      SHARE_ID = #{shareId,jdbcType=VARCHAR}
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.Website">
+    <id column="WEBSITE_ID" jdbcType="VARCHAR" property="websiteId" />
+    <result column="WEBSITE_NAME" jdbcType="VARCHAR" property="websiteName" />
+    <result column="WEBSITE_TYPE" jdbcType="VARCHAR" property="websiteType" />
+    <result column="FIRST_DOMAIN" jdbcType="VARCHAR" property="firstDomain" />
+    <result column="SECOND_DOMAIN" jdbcType="VARCHAR" property="secondDomain" />
+    <result column="WEBSITE_STATUS" jdbcType="DECIMAL" property="websiteStatus" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="FOUNDER_ID" jdbcType="VARCHAR" property="founderId" />
+    <result column="MODIFIER_ID" jdbcType="VARCHAR" property="modifierId" />
+    <result column="SHARE_ID" jdbcType="VARCHAR" property="shareId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    WEBSITE_ID, WEBSITE_NAME, WEBSITE_TYPE, FIRST_DOMAIN, SECOND_DOMAIN, WEBSITE_STATUS, 
+    CREATE_TIME, MODIFY_TIME, FOUNDER_ID, MODIFIER_ID, SHARE_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_website
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_website
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.Website">
+    insert into crawler_website (WEBSITE_ID, WEBSITE_NAME, WEBSITE_TYPE, 
+      FIRST_DOMAIN, SECOND_DOMAIN, WEBSITE_STATUS, 
+      CREATE_TIME, MODIFY_TIME, FOUNDER_ID, 
+      MODIFIER_ID, SHARE_ID)
+    values (#{websiteId,jdbcType=VARCHAR}, #{websiteName,jdbcType=VARCHAR}, #{websiteType,jdbcType=VARCHAR}, 
+      #{firstDomain,jdbcType=VARCHAR}, #{secondDomain,jdbcType=VARCHAR}, #{websiteStatus,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{founderId,jdbcType=VARCHAR}, 
+      #{modifierId,jdbcType=VARCHAR}, #{shareId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.Website">
+    insert into crawler_website
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="websiteId != null">
+        WEBSITE_ID,
+      </if>
+      <if test="websiteName != null">
+        WEBSITE_NAME,
+      </if>
+      <if test="websiteType != null">
+        WEBSITE_TYPE,
+      </if>
+      <if test="firstDomain != null">
+        FIRST_DOMAIN,
+      </if>
+      <if test="secondDomain != null">
+        SECOND_DOMAIN,
+      </if>
+      <if test="websiteStatus != null">
+        WEBSITE_STATUS,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID,
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID,
+      </if>
+      <if test="shareId != null">
+        SHARE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="websiteId != null">
+        #{websiteId,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteName != null">
+        #{websiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteType != null">
+        #{websiteType,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDomain != null">
+        #{firstDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="secondDomain != null">
+        #{secondDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteStatus != null">
+        #{websiteStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        #{modifierId,jdbcType=VARCHAR},
+      </if>
+      <if test="shareId != null">
+        #{shareId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.Website">
+    update crawler_website
+    <set>
+      <if test="websiteName != null">
+        WEBSITE_NAME = #{websiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteType != null">
+        WEBSITE_TYPE = #{websiteType,jdbcType=VARCHAR},
+      </if>
+      <if test="firstDomain != null">
+        FIRST_DOMAIN = #{firstDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="secondDomain != null">
+        SECOND_DOMAIN = #{secondDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteStatus != null">
+        WEBSITE_STATUS = #{websiteStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      </if>
+      <if test="shareId != null">
+        SHARE_ID = #{shareId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.Website">
+    update crawler_website
+    set WEBSITE_NAME = #{websiteName,jdbcType=VARCHAR},
+      WEBSITE_TYPE = #{websiteType,jdbcType=VARCHAR},
+      FIRST_DOMAIN = #{firstDomain,jdbcType=VARCHAR},
+      SECOND_DOMAIN = #{secondDomain,jdbcType=VARCHAR},
+      WEBSITE_STATUS = #{websiteStatus,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      SHARE_ID = #{shareId,jdbcType=VARCHAR}
+    where WEBSITE_ID = #{websiteId,jdbcType=VARCHAR}
+  </update>
+</mapper>

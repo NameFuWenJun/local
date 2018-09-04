@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inspur.dataFactory.job.mapper.InstanceLogMapper">
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceLog">
+    <id column="LOG_ID" jdbcType="VARCHAR" property="logId" />
+    <result column="INSTANCE_ID" jdbcType="VARCHAR" property="instanceId" />
+    <result column="LOG_TYPE" jdbcType="DECIMAL" property="logType" />
+    <result column="HANDLER_ID" jdbcType="VARCHAR" property="handlerId" />
+    <result column="HANDLER_TIME" jdbcType="TIMESTAMP" property="handlerTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    LOG_ID, INSTANCE_ID, LOG_TYPE, HANDLER_ID, HANDLER_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_instance_log
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_instance_log
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceLog">
+    insert into crawler_instance_log (LOG_ID, INSTANCE_ID, LOG_TYPE, 
+      HANDLER_ID, HANDLER_TIME)
+    values (#{logId,jdbcType=VARCHAR}, #{instanceId,jdbcType=VARCHAR}, #{logType,jdbcType=DECIMAL}, 
+      #{handlerId,jdbcType=VARCHAR}, #{handlerTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceLog">
+    insert into crawler_instance_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        LOG_ID,
+      </if>
+      <if test="instanceId != null">
+        INSTANCE_ID,
+      </if>
+      <if test="logType != null">
+        LOG_TYPE,
+      </if>
+      <if test="handlerId != null">
+        HANDLER_ID,
+      </if>
+      <if test="handlerTime != null">
+        HANDLER_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        #{logId,jdbcType=VARCHAR},
+      </if>
+      <if test="instanceId != null">
+        #{instanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        #{logType,jdbcType=DECIMAL},
+      </if>
+      <if test="handlerId != null">
+        #{handlerId,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerTime != null">
+        #{handlerTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceLog">
+    update crawler_instance_log
+    <set>
+      <if test="instanceId != null">
+        INSTANCE_ID = #{instanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        LOG_TYPE = #{logType,jdbcType=DECIMAL},
+      </if>
+      <if test="handlerId != null">
+        HANDLER_ID = #{handlerId,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerTime != null">
+        HANDLER_TIME = #{handlerTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceLog">
+    update crawler_instance_log
+    set INSTANCE_ID = #{instanceId,jdbcType=VARCHAR},
+      LOG_TYPE = #{logType,jdbcType=DECIMAL},
+      HANDLER_ID = #{handlerId,jdbcType=VARCHAR},
+      HANDLER_TIME = #{handlerTime,jdbcType=TIMESTAMP}
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceLog">
+    <id column="LOG_ID" jdbcType="VARCHAR" property="logId" />
+    <result column="INSTANCE_ID" jdbcType="VARCHAR" property="instanceId" />
+    <result column="LOG_TYPE" jdbcType="DECIMAL" property="logType" />
+    <result column="HANDLER_ID" jdbcType="VARCHAR" property="handlerId" />
+    <result column="HANDLER_TIME" jdbcType="TIMESTAMP" property="handlerTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    LOG_ID, INSTANCE_ID, LOG_TYPE, HANDLER_ID, HANDLER_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_instance_log
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_instance_log
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceLog">
+    insert into crawler_instance_log (LOG_ID, INSTANCE_ID, LOG_TYPE, 
+      HANDLER_ID, HANDLER_TIME)
+    values (#{logId,jdbcType=VARCHAR}, #{instanceId,jdbcType=VARCHAR}, #{logType,jdbcType=DECIMAL}, 
+      #{handlerId,jdbcType=VARCHAR}, #{handlerTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceLog">
+    insert into crawler_instance_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        LOG_ID,
+      </if>
+      <if test="instanceId != null">
+        INSTANCE_ID,
+      </if>
+      <if test="logType != null">
+        LOG_TYPE,
+      </if>
+      <if test="handlerId != null">
+        HANDLER_ID,
+      </if>
+      <if test="handlerTime != null">
+        HANDLER_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        #{logId,jdbcType=VARCHAR},
+      </if>
+      <if test="instanceId != null">
+        #{instanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        #{logType,jdbcType=DECIMAL},
+      </if>
+      <if test="handlerId != null">
+        #{handlerId,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerTime != null">
+        #{handlerTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceLog">
+    update crawler_instance_log
+    <set>
+      <if test="instanceId != null">
+        INSTANCE_ID = #{instanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="logType != null">
+        LOG_TYPE = #{logType,jdbcType=DECIMAL},
+      </if>
+      <if test="handlerId != null">
+        HANDLER_ID = #{handlerId,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerTime != null">
+        HANDLER_TIME = #{handlerTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.InstanceLog">
+    update crawler_instance_log
+    set INSTANCE_ID = #{instanceId,jdbcType=VARCHAR},
+      LOG_TYPE = #{logType,jdbcType=DECIMAL},
+      HANDLER_ID = #{handlerId,jdbcType=VARCHAR},
+      HANDLER_TIME = #{handlerTime,jdbcType=TIMESTAMP}
+    where LOG_ID = #{logId,jdbcType=VARCHAR}
+  </update>
+</mapper>

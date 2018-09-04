@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mybatis.mapper.TaskMapper" >
+  <resultMap id="BaseResultMap" type="com.itheima.mybatis.pojo.Task" >
+    <id column="TASK_ID" property="taskId" jdbcType="VARCHAR" />
+    <result column="WEBSITE_ID" property="websiteId" jdbcType="VARCHAR" />
+    <result column="TASK_NAME" property="taskName" jdbcType="VARCHAR" />
+    <result column="TASK_TYPE" property="taskType" jdbcType="VARCHAR" />
+    <result column="START_URL" property="startUrl" jdbcType="VARCHAR" />
+    <result column="TEST_TABLE" property="testTable" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_TIME" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="FOUNDER_ID" property="founderId" jdbcType="VARCHAR" />
+    <result column="MODIFIER_ID" property="modifierId" jdbcType="VARCHAR" />
+    <result column="SHARE_ID" property="shareId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TASK_ID, WEBSITE_ID, TASK_NAME, TASK_TYPE, START_URL, TEST_TABLE, CREATE_TIME, MODIFY_TIME, 
+    FOUNDER_ID, MODIFIER_ID, SHARE_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_task
+    where TASK_ID = #{taskId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from crawler_task
+    where TASK_ID = #{taskId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.mybatis.pojo.Task" >
+    insert into crawler_task (TASK_ID, WEBSITE_ID, TASK_NAME, 
+      TASK_TYPE, START_URL, TEST_TABLE, 
+      CREATE_TIME, MODIFY_TIME, FOUNDER_ID, 
+      MODIFIER_ID, SHARE_ID)
+    values (#{taskId,jdbcType=VARCHAR}, #{websiteId,jdbcType=VARCHAR}, #{taskName,jdbcType=VARCHAR}, 
+      #{taskType,jdbcType=VARCHAR}, #{startUrl,jdbcType=VARCHAR}, #{testTable,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{founderId,jdbcType=VARCHAR}, 
+      #{modifierId,jdbcType=VARCHAR}, #{shareId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.mybatis.pojo.Task" >
+    insert into crawler_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        TASK_ID,
+      </if>
+      <if test="websiteId != null" >
+        WEBSITE_ID,
+      </if>
+      <if test="taskName != null" >
+        TASK_NAME,
+      </if>
+      <if test="taskType != null" >
+        TASK_TYPE,
+      </if>
+      <if test="startUrl != null" >
+        START_URL,
+      </if>
+      <if test="testTable != null" >
+        TEST_TABLE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME,
+      </if>
+      <if test="founderId != null" >
+        FOUNDER_ID,
+      </if>
+      <if test="modifierId != null" >
+        MODIFIER_ID,
+      </if>
+      <if test="shareId != null" >
+        SHARE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskId != null" >
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="websiteId != null" >
+        #{websiteId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskName != null" >
+        #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null" >
+        #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="startUrl != null" >
+        #{startUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="testTable != null" >
+        #{testTable,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null" >
+        #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null" >
+        #{modifierId,jdbcType=VARCHAR},
+      </if>
+      <if test="shareId != null" >
+        #{shareId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itheima.mybatis.pojo.Task" >
+    update crawler_task
+    <set >
+      <if test="websiteId != null" >
+        WEBSITE_ID = #{websiteId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskName != null" >
+        TASK_NAME = #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskType != null" >
+        TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+      </if>
+      <if test="startUrl != null" >
+        START_URL = #{startUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="testTable != null" >
+        TEST_TABLE = #{testTable,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null" >
+        FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null" >
+        MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      </if>
+      <if test="shareId != null" >
+        SHARE_ID = #{shareId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TASK_ID = #{taskId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itheima.mybatis.pojo.Task" >
+    update crawler_task
+    set WEBSITE_ID = #{websiteId,jdbcType=VARCHAR},
+      TASK_NAME = #{taskName,jdbcType=VARCHAR},
+      TASK_TYPE = #{taskType,jdbcType=VARCHAR},
+      START_URL = #{startUrl,jdbcType=VARCHAR},
+      TEST_TABLE = #{testTable,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      SHARE_ID = #{shareId,jdbcType=VARCHAR}
+    where TASK_ID = #{taskId,jdbcType=VARCHAR}
+  </update>
+</mapper>

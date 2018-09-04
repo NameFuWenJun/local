@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inspur.dataFactory.job.mapper.DataHandleMapper">
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataHandle">
+    <result column="HANDLE_TYPE" jdbcType="DECIMAL" property="handleType" />
+    <result column="START_TIME" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="END_TIME" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="STARTER_ID" jdbcType="VARCHAR" property="starterId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataHandle">
+    insert into crawler_data_handle (HANDLE_TYPE, START_TIME, END_TIME, 
+      STARTER_ID)
+    values (#{handleType,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{starterId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataHandle">
+    insert into crawler_data_handle
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="handleType != null">
+        HANDLE_TYPE,
+      </if>
+      <if test="startTime != null">
+        START_TIME,
+      </if>
+      <if test="endTime != null">
+        END_TIME,
+      </if>
+      <if test="starterId != null">
+        STARTER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="handleType != null">
+        #{handleType,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starterId != null">
+        #{starterId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataHandle">
+    <result column="HANDLE_TYPE" jdbcType="DECIMAL" property="handleType" />
+    <result column="START_TIME" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="END_TIME" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="STARTER_ID" jdbcType="VARCHAR" property="starterId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataHandle">
+    insert into crawler_data_handle (HANDLE_TYPE, START_TIME, END_TIME, 
+      STARTER_ID)
+    values (#{handleType,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{starterId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataHandle">
+    insert into crawler_data_handle
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="handleType != null">
+        HANDLE_TYPE,
+      </if>
+      <if test="startTime != null">
+        START_TIME,
+      </if>
+      <if test="endTime != null">
+        END_TIME,
+      </if>
+      <if test="starterId != null">
+        STARTER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="handleType != null">
+        #{handleType,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starterId != null">
+        #{starterId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inspur.dataFactory.job.mapper.ItemContraintMapper">
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ItemContraint">
+    <id column="CONSTRAINT_ID" jdbcType="VARCHAR" property="constraintId" />
+    <result column="ITEM_ID" jdbcType="VARCHAR" property="itemId" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="FOUNDER_ID" jdbcType="VARCHAR" property="founderId" />
+    <result column="MODIFIER_ID" jdbcType="VARCHAR" property="modifierId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONSTRAINT_ID, ITEM_ID, CREATE_TIME, MODIFY_TIME, FOUNDER_ID, MODIFIER_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_item_constraint
+    where CONSTRAINT_ID = #{constraintId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_item_constraint
+    where CONSTRAINT_ID = #{constraintId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ItemContraint">
+    insert into crawler_item_constraint (CONSTRAINT_ID, ITEM_ID, CREATE_TIME, 
+      MODIFY_TIME, FOUNDER_ID, MODIFIER_ID
+      )
+    values (#{constraintId,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{founderId,jdbcType=VARCHAR}, #{modifierId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ItemContraint">
+    insert into crawler_item_constraint
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="constraintId != null">
+        CONSTRAINT_ID,
+      </if>
+      <if test="itemId != null">
+        ITEM_ID,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID,
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="constraintId != null">
+        #{constraintId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ItemContraint">
+    update crawler_item_constraint
+    <set>
+      <if test="itemId != null">
+        ITEM_ID = #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONSTRAINT_ID = #{constraintId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ItemContraint">
+    update crawler_item_constraint
+    set ITEM_ID = #{itemId,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      MODIFIER_ID = #{modifierId,jdbcType=VARCHAR}
+    where CONSTRAINT_ID = #{constraintId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ItemContraint">
+    <id column="CONSTRAINT_ID" jdbcType="VARCHAR" property="constraintId" />
+    <result column="ITEM_ID" jdbcType="VARCHAR" property="itemId" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="FOUNDER_ID" jdbcType="VARCHAR" property="founderId" />
+    <result column="MODIFIER_ID" jdbcType="VARCHAR" property="modifierId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CONSTRAINT_ID, ITEM_ID, CREATE_TIME, MODIFY_TIME, FOUNDER_ID, MODIFIER_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_item_constraint
+    where CONSTRAINT_ID = #{constraintId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_item_constraint
+    where CONSTRAINT_ID = #{constraintId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ItemContraint">
+    insert into crawler_item_constraint (CONSTRAINT_ID, ITEM_ID, CREATE_TIME, 
+      MODIFY_TIME, FOUNDER_ID, MODIFIER_ID
+      )
+    values (#{constraintId,jdbcType=VARCHAR}, #{itemId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{founderId,jdbcType=VARCHAR}, #{modifierId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ItemContraint">
+    insert into crawler_item_constraint
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="constraintId != null">
+        CONSTRAINT_ID,
+      </if>
+      <if test="itemId != null">
+        ITEM_ID,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID,
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="constraintId != null">
+        #{constraintId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ItemContraint">
+    update crawler_item_constraint
+    <set>
+      <if test="itemId != null">
+        ITEM_ID = #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="founderId != null">
+        FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierId != null">
+        MODIFIER_ID = #{modifierId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CONSTRAINT_ID = #{constraintId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.ItemContraint">
+    update crawler_item_constraint
+    set ITEM_ID = #{itemId,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      FOUNDER_ID = #{founderId,jdbcType=VARCHAR},
+      MODIFIER_ID = #{modifierId,jdbcType=VARCHAR}
+    where CONSTRAINT_ID = #{constraintId,jdbcType=VARCHAR}
+  </update>
+</mapper>

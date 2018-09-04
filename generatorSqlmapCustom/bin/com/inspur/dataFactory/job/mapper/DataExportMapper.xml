@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inspur.dataFactory.job.mapper.DataExportMapper">
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataExport">
+    <id column="INSTANCE_ID" jdbcType="VARCHAR" property="instanceId" />
+    <result column="RULE_ID" jdbcType="VARCHAR" property="ruleId" />
+    <result column="EXPORT_TYPE" jdbcType="DECIMAL" property="exportType" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+    <result column="APPEND" jdbcType="DECIMAL" property="append" />
+    <result column="START_TIME" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="END_TIME" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="STARTER_ID" jdbcType="VARCHAR" property="starterId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    INSTANCE_ID, RULE_ID, EXPORT_TYPE, TABLE_NAME, APPEND, START_TIME, END_TIME, STARTER_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_data_export
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_data_export
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataExport">
+    insert into crawler_data_export (INSTANCE_ID, RULE_ID, EXPORT_TYPE, 
+      TABLE_NAME, APPEND, START_TIME, 
+      END_TIME, STARTER_ID)
+    values (#{instanceId,jdbcType=VARCHAR}, #{ruleId,jdbcType=VARCHAR}, #{exportType,jdbcType=DECIMAL}, 
+      #{tableName,jdbcType=VARCHAR}, #{append,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{starterId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataExport">
+    insert into crawler_data_export
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="instanceId != null">
+        INSTANCE_ID,
+      </if>
+      <if test="ruleId != null">
+        RULE_ID,
+      </if>
+      <if test="exportType != null">
+        EXPORT_TYPE,
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME,
+      </if>
+      <if test="append != null">
+        APPEND,
+      </if>
+      <if test="startTime != null">
+        START_TIME,
+      </if>
+      <if test="endTime != null">
+        END_TIME,
+      </if>
+      <if test="starterId != null">
+        STARTER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="instanceId != null">
+        #{instanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="exportType != null">
+        #{exportType,jdbcType=DECIMAL},
+      </if>
+      <if test="tableName != null">
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="append != null">
+        #{append,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starterId != null">
+        #{starterId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataExport">
+    update crawler_data_export
+    <set>
+      <if test="ruleId != null">
+        RULE_ID = #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="exportType != null">
+        EXPORT_TYPE = #{exportType,jdbcType=DECIMAL},
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="append != null">
+        APPEND = #{append,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null">
+        START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starterId != null">
+        STARTER_ID = #{starterId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataExport">
+    update crawler_data_export
+    set RULE_ID = #{ruleId,jdbcType=VARCHAR},
+      EXPORT_TYPE = #{exportType,jdbcType=DECIMAL},
+      TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      APPEND = #{append,jdbcType=DECIMAL},
+      START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      STARTER_ID = #{starterId,jdbcType=VARCHAR}
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataExport">
+    <id column="INSTANCE_ID" jdbcType="VARCHAR" property="instanceId" />
+    <result column="RULE_ID" jdbcType="VARCHAR" property="ruleId" />
+    <result column="EXPORT_TYPE" jdbcType="DECIMAL" property="exportType" />
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+    <result column="APPEND" jdbcType="DECIMAL" property="append" />
+    <result column="START_TIME" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="END_TIME" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="STARTER_ID" jdbcType="VARCHAR" property="starterId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    INSTANCE_ID, RULE_ID, EXPORT_TYPE, TABLE_NAME, APPEND, START_TIME, END_TIME, STARTER_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_data_export
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from crawler_data_export
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataExport">
+    insert into crawler_data_export (INSTANCE_ID, RULE_ID, EXPORT_TYPE, 
+      TABLE_NAME, APPEND, START_TIME, 
+      END_TIME, STARTER_ID)
+    values (#{instanceId,jdbcType=VARCHAR}, #{ruleId,jdbcType=VARCHAR}, #{exportType,jdbcType=DECIMAL}, 
+      #{tableName,jdbcType=VARCHAR}, #{append,jdbcType=DECIMAL}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{starterId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataExport">
+    insert into crawler_data_export
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="instanceId != null">
+        INSTANCE_ID,
+      </if>
+      <if test="ruleId != null">
+        RULE_ID,
+      </if>
+      <if test="exportType != null">
+        EXPORT_TYPE,
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME,
+      </if>
+      <if test="append != null">
+        APPEND,
+      </if>
+      <if test="startTime != null">
+        START_TIME,
+      </if>
+      <if test="endTime != null">
+        END_TIME,
+      </if>
+      <if test="starterId != null">
+        STARTER_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="instanceId != null">
+        #{instanceId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="exportType != null">
+        #{exportType,jdbcType=DECIMAL},
+      </if>
+      <if test="tableName != null">
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="append != null">
+        #{append,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starterId != null">
+        #{starterId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataExport">
+    update crawler_data_export
+    <set>
+      <if test="ruleId != null">
+        RULE_ID = #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="exportType != null">
+        EXPORT_TYPE = #{exportType,jdbcType=DECIMAL},
+      </if>
+      <if test="tableName != null">
+        TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="append != null">
+        APPEND = #{append,jdbcType=DECIMAL},
+      </if>
+      <if test="startTime != null">
+        START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="starterId != null">
+        STARTER_ID = #{starterId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inspur.dataFactory.job.pojo.reverseProxyPojo.DataExport">
+    update crawler_data_export
+    set RULE_ID = #{ruleId,jdbcType=VARCHAR},
+      EXPORT_TYPE = #{exportType,jdbcType=DECIMAL},
+      TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+      APPEND = #{append,jdbcType=DECIMAL},
+      START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      END_TIME = #{endTime,jdbcType=TIMESTAMP},
+      STARTER_ID = #{starterId,jdbcType=VARCHAR}
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </update>
+</mapper>

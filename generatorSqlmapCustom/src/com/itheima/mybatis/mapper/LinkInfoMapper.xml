@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mybatis.mapper.LinkInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.itheima.mybatis.pojo.LinkInfo" >
+    <id column="LINK_ID" property="linkId" jdbcType="VARCHAR" />
+    <result column="LINK_NAME" property="linkName" jdbcType="VARCHAR" />
+    <result column="URL_PATTERN" property="urlPattern" jdbcType="VARCHAR" />
+    <result column="TEST_URL" property="testUrl" jdbcType="VARCHAR" />
+    <result column="TEST_TABLE" property="testTable" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    LINK_ID, LINK_NAME, URL_PATTERN, TEST_URL, TEST_TABLE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from crawler_link_info
+    where LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from crawler_link_info
+    where LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.mybatis.pojo.LinkInfo" >
+    insert into crawler_link_info (LINK_ID, LINK_NAME, URL_PATTERN, 
+      TEST_URL, TEST_TABLE)
+    values (#{linkId,jdbcType=VARCHAR}, #{linkName,jdbcType=VARCHAR}, #{urlPattern,jdbcType=VARCHAR}, 
+      #{testUrl,jdbcType=VARCHAR}, #{testTable,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.mybatis.pojo.LinkInfo" >
+    insert into crawler_link_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="linkId != null" >
+        LINK_ID,
+      </if>
+      <if test="linkName != null" >
+        LINK_NAME,
+      </if>
+      <if test="urlPattern != null" >
+        URL_PATTERN,
+      </if>
+      <if test="testUrl != null" >
+        TEST_URL,
+      </if>
+      <if test="testTable != null" >
+        TEST_TABLE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="linkId != null" >
+        #{linkId,jdbcType=VARCHAR},
+      </if>
+      <if test="linkName != null" >
+        #{linkName,jdbcType=VARCHAR},
+      </if>
+      <if test="urlPattern != null" >
+        #{urlPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="testUrl != null" >
+        #{testUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="testTable != null" >
+        #{testTable,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itheima.mybatis.pojo.LinkInfo" >
+    update crawler_link_info
+    <set >
+      <if test="linkName != null" >
+        LINK_NAME = #{linkName,jdbcType=VARCHAR},
+      </if>
+      <if test="urlPattern != null" >
+        URL_PATTERN = #{urlPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="testUrl != null" >
+        TEST_URL = #{testUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="testTable != null" >
+        TEST_TABLE = #{testTable,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itheima.mybatis.pojo.LinkInfo" >
+    update crawler_link_info
+    set LINK_NAME = #{linkName,jdbcType=VARCHAR},
+      URL_PATTERN = #{urlPattern,jdbcType=VARCHAR},
+      TEST_URL = #{testUrl,jdbcType=VARCHAR},
+      TEST_TABLE = #{testTable,jdbcType=VARCHAR}
+    where LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </update>
+</mapper>

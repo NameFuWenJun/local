@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mybatis.mapper.InstanceMonitorMapper" >
+  <resultMap id="BaseResultMap" type="com.itheima.mybatis.pojo.InstanceMonitor" >
+    <id column="INSTANCE_ID" property="instanceId" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from crawler_instance_monitor
+    where INSTANCE_ID = #{instanceId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itheima.mybatis.pojo.InstanceMonitor" >
+    insert into crawler_instance_monitor (INSTANCE_ID)
+    values (#{instanceId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itheima.mybatis.pojo.InstanceMonitor" >
+    insert into crawler_instance_monitor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="instanceId != null" >
+        INSTANCE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="instanceId != null" >
+        #{instanceId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
