@@ -14,4 +14,6 @@ public interface DescribeMapper {
     int updateByPrimaryKeySelective(Describe record);
 
     int updateByPrimaryKeyWithBLOBs(Describe record);
+
+    int updateByPrimaryKey(Describe record);
 }

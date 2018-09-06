@@ -3,6 +3,8 @@ package com.fisher.pojo;
 public class Describe {
     private Integer describeId;
 
+    private Integer merchandiseId;
+
     private String describeText;
 
     public Integer getDescribeId() {
@@ -11,6 +13,14 @@ public class Describe {
 
     public void setDescribeId(Integer describeId) {
         this.describeId = describeId;
+    }
+
+    public Integer getMerchandiseId() {
+        return merchandiseId;
+    }
+
+    public void setMerchandiseId(Integer merchandiseId) {
+        this.merchandiseId = merchandiseId;
     }
 
     public String getDescribeText() {

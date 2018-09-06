@@ -3,11 +3,12 @@
 <mapper namespace="com.fisher.mapper.ImageMapper" >
   <resultMap id="BaseResultMap" type="com.fisher.pojo.Image" >
     <id column="image_id" property="imageId" jdbcType="INTEGER" />
+    <result column="merchandise_id" property="merchandiseId" jdbcType="INTEGER" />
     <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
     <result column="image_name" property="imageName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    image_id, image_path, image_name
+    image_id, merchandise_id, image_path, image_name
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,16 +21,19 @@
     where image_id = #{imageId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.fisher.pojo.Image" >
-    insert into image (image_id, image_path, image_name
-      )
-    values (#{imageId,jdbcType=INTEGER}, #{imagePath,jdbcType=VARCHAR}, #{imageName,jdbcType=VARCHAR}
-      )
+    insert into image (image_id, merchandise_id, image_path, 
+      image_name)
+    values (#{imageId,jdbcType=INTEGER}, #{merchandiseId,jdbcType=INTEGER}, #{imagePath,jdbcType=VARCHAR}, 
+      #{imageName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fisher.pojo.Image" >
     insert into image
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="imageId != null" >
         image_id,
+      </if>
+      <if test="merchandiseId != null" >
+        merchandise_id,
       </if>
       <if test="imagePath != null" >
         image_path,
@@ -42,6 +46,9 @@
       <if test="imageId != null" >
         #{imageId,jdbcType=INTEGER},
       </if>
+      <if test="merchandiseId != null" >
+        #{merchandiseId,jdbcType=INTEGER},
+      </if>
       <if test="imagePath != null" >
         #{imagePath,jdbcType=VARCHAR},
       </if>
@@ -53,6 +60,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.fisher.pojo.Image" >
     update image
     <set >
+      <if test="merchandiseId != null" >
+        merchandise_id = #{merchandiseId,jdbcType=INTEGER},
+      </if>
       <if test="imagePath != null" >
         image_path = #{imagePath,jdbcType=VARCHAR},
       </if>
@@ -64,7 +74,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fisher.pojo.Image" >
     update image
-    set image_path = #{imagePath,jdbcType=VARCHAR},
+    set merchandise_id = #{merchandiseId,jdbcType=INTEGER},
+      image_path = #{imagePath,jdbcType=VARCHAR},
       image_name = #{imageName,jdbcType=VARCHAR}
     where image_id = #{imageId,jdbcType=INTEGER}
   </update>

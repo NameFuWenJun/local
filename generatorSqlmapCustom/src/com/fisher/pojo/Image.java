@@ -3,6 +3,8 @@ package com.fisher.pojo;
 public class Image {
     private Integer imageId;
 
+    private Integer merchandiseId;
+
     private String imagePath;
 
     private String imageName;
@@ -13,6 +15,14 @@ public class Image {
 
     public void setImageId(Integer imageId) {
         this.imageId = imageId;
+    }
+
+    public Integer getMerchandiseId() {
+        return merchandiseId;
+    }
+
+    public void setMerchandiseId(Integer merchandiseId) {
+        this.merchandiseId = merchandiseId;
     }
 
     public String getImagePath() {

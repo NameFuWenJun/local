@@ -3,9 +3,6 @@
 <mapper namespace="com.fisher.mapper.MerchandiseMapper" >
   <resultMap id="BaseResultMap" type="com.fisher.pojo.Merchandise" >
     <id column="merchandise_id" property="merchandiseId" jdbcType="INTEGER" />
-    <result column="image_id" property="imageId" jdbcType="INTEGER" />
-    <result column="describe_id" property="describeId" jdbcType="INTEGER" />
-    <result column="comment_id" property="commentId" jdbcType="INTEGER" />
     <result column="merchandise_name" property="merchandiseName" jdbcType="VARCHAR" />
     <result column="merchandise_price" property="merchandisePrice" jdbcType="DOUBLE" />
     <result column="merchandise_attribute" property="merchandiseAttribute" jdbcType="VARCHAR" />
@@ -13,8 +10,8 @@
     <result column="merchandise_inventory" property="merchandiseInventory" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    merchandise_id, image_id, describe_id, comment_id, merchandise_name, merchandise_price, 
-    merchandise_attribute, merchandise_priceScope, merchandise_inventory
+    merchandise_id, merchandise_name, merchandise_price, merchandise_attribute, merchandise_priceScope, 
+    merchandise_inventory
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -27,12 +24,10 @@
     where merchandise_id = #{merchandiseId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.fisher.pojo.Merchandise" >
-    insert into merchandise (merchandise_id, image_id, describe_id, 
-      comment_id, merchandise_name, merchandise_price, 
+    insert into merchandise (merchandise_id, merchandise_name, merchandise_price, 
       merchandise_attribute, merchandise_priceScope, 
       merchandise_inventory)
-    values (#{merchandiseId,jdbcType=INTEGER}, #{imageId,jdbcType=INTEGER}, #{describeId,jdbcType=INTEGER}, 
-      #{commentId,jdbcType=INTEGER}, #{merchandiseName,jdbcType=VARCHAR}, #{merchandisePrice,jdbcType=DOUBLE}, 
+    values (#{merchandiseId,jdbcType=INTEGER}, #{merchandiseName,jdbcType=VARCHAR}, #{merchandisePrice,jdbcType=DOUBLE}, 
       #{merchandiseAttribute,jdbcType=VARCHAR}, #{merchandisePricescope,jdbcType=VARCHAR}, 
       #{merchandiseInventory,jdbcType=INTEGER})
   </insert>
@@ -41,15 +36,6 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="merchandiseId != null" >
         merchandise_id,
-      </if>
-      <if test="imageId != null" >
-        image_id,
-      </if>
-      <if test="describeId != null" >
-        describe_id,
-      </if>
-      <if test="commentId != null" >
-        comment_id,
       </if>
       <if test="merchandiseName != null" >
         merchandise_name,
@@ -71,15 +57,6 @@
       <if test="merchandiseId != null" >
         #{merchandiseId,jdbcType=INTEGER},
       </if>
-      <if test="imageId != null" >
-        #{imageId,jdbcType=INTEGER},
-      </if>
-      <if test="describeId != null" >
-        #{describeId,jdbcType=INTEGER},
-      </if>
-      <if test="commentId != null" >
-        #{commentId,jdbcType=INTEGER},
-      </if>
       <if test="merchandiseName != null" >
         #{merchandiseName,jdbcType=VARCHAR},
       </if>
@@ -100,15 +77,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.fisher.pojo.Merchandise" >
     update merchandise
     <set >
-      <if test="imageId != null" >
-        image_id = #{imageId,jdbcType=INTEGER},
-      </if>
-      <if test="describeId != null" >
-        describe_id = #{describeId,jdbcType=INTEGER},
-      </if>
-      <if test="commentId != null" >
-        comment_id = #{commentId,jdbcType=INTEGER},
-      </if>
       <if test="merchandiseName != null" >
         merchandise_name = #{merchandiseName,jdbcType=VARCHAR},
       </if>
@@ -129,10 +97,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fisher.pojo.Merchandise" >
     update merchandise
-    set image_id = #{imageId,jdbcType=INTEGER},
-      describe_id = #{describeId,jdbcType=INTEGER},
-      comment_id = #{commentId,jdbcType=INTEGER},
-      merchandise_name = #{merchandiseName,jdbcType=VARCHAR},
+    set merchandise_name = #{merchandiseName,jdbcType=VARCHAR},
       merchandise_price = #{merchandisePrice,jdbcType=DOUBLE},
       merchandise_attribute = #{merchandiseAttribute,jdbcType=VARCHAR},
       merchandise_priceScope = #{merchandisePricescope,jdbcType=VARCHAR},

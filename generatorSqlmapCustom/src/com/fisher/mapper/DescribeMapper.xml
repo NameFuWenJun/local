@@ -3,12 +3,13 @@
 <mapper namespace="com.fisher.mapper.DescribeMapper" >
   <resultMap id="BaseResultMap" type="com.fisher.pojo.Describe" >
     <id column="describe_id" property="describeId" jdbcType="INTEGER" />
+    <result column="merchandise_id" property="merchandiseId" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.fisher.pojo.Describe" extends="BaseResultMap" >
     <result column="describe_text" property="describeText" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    describe_id
+    describe_id, merchandise_id
   </sql>
   <sql id="Blob_Column_List" >
     describe_text
@@ -26,14 +27,19 @@
     where describe_id = #{describeId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.fisher.pojo.Describe" >
-    insert into user_describe (describe_id, describe_text)
-    values (#{describeId,jdbcType=INTEGER}, #{describeText,jdbcType=LONGVARCHAR})
+    insert into user_describe (describe_id, merchandise_id, describe_text
+      )
+    values (#{describeId,jdbcType=INTEGER}, #{merchandiseId,jdbcType=INTEGER}, #{describeText,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.fisher.pojo.Describe" >
     insert into user_describe
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="describeId != null" >
         describe_id,
+      </if>
+      <if test="merchandiseId != null" >
+        merchandise_id,
       </if>
       <if test="describeText != null" >
         describe_text,
@@ -43,6 +49,9 @@
       <if test="describeId != null" >
         #{describeId,jdbcType=INTEGER},
       </if>
+      <if test="merchandiseId != null" >
+        #{merchandiseId,jdbcType=INTEGER},
+      </if>
       <if test="describeText != null" >
         #{describeText,jdbcType=LONGVARCHAR},
       </if>
@@ -51,6 +60,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.fisher.pojo.Describe" >
     update user_describe
     <set >
+      <if test="merchandiseId != null" >
+        merchandise_id = #{merchandiseId,jdbcType=INTEGER},
+      </if>
       <if test="describeText != null" >
         describe_text = #{describeText,jdbcType=LONGVARCHAR},
       </if>
@@ -59,7 +71,13 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fisher.pojo.Describe" >
     update user_describe
-    set describe_text = #{describeText,jdbcType=LONGVARCHAR}
+    set merchandise_id = #{merchandiseId,jdbcType=INTEGER},
+      describe_text = #{describeText,jdbcType=LONGVARCHAR}
+    where describe_id = #{describeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fisher.pojo.Describe" >
+    update user_describe
+    set merchandise_id = #{merchandiseId,jdbcType=INTEGER}
     where describe_id = #{describeId,jdbcType=INTEGER}
   </update>
 </mapper>
